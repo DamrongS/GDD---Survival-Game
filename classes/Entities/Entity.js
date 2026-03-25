@@ -12,7 +12,7 @@ class Entity {
         rectMode(CENTER);
     }
 
-    draw() {
+    render() {
         push()
         translate(x, y)
         if(this.moveDirection.mag() > 0) {

@@ -1,0 +1,19 @@
+Template: 
+GDD - Survival Game (Game Design Document - Survival Game)
+
+This is a top-down survival game where the player must gather resources, 
+build shelter, 
+and fend off enemies to survive in a hostile environment. 
+The game features a dynamic day-night cycle, weather effects, and a variety of crafting options.
+
+Project Link: https://github.com/DamrongS/GDD---Survival-Game
+GDD Link: https://docs.google.com/document/d/1IJ2C_lnbNUXAmIutAs58g1jQfUIbfmxFuaQ2LBYkUAE/edit?usp=sharing
+
+Optimizations:
+In this project, i am always trying to go for the OOP approach, and i am using the component-based design pattern to make my code more modular and reusable. 
+I also implemented a simple object pooling system for the enemies to improve performance and reduce memory usage.
+This allows me to reuse enemy objects instead of creating and destroying them frequently, which can lead to performance issues.
+
+Lessons Learned:
+1. The importance of planning and designing before coding. 
+   By creating a detailed game design document, I was able to have a clear vision of the game mechanics, features, and overall structure before starting development.

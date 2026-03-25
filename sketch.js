@@ -12,6 +12,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   noSmooth();
   imageMode(CENTER);
+  textAlign(CENTER, CENTER);
 
   myWorld = new World();
 

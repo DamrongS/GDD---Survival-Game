@@ -15,11 +15,11 @@ class Player extends Entity {
         this.animationFrameCount = 12;
         this.animationSpeed = 0.1;
 
-        this.directionAngle = 0;
+        this.directionAngle = 3;
         this.speed = 4;
     }
 
-    draw() {
+    render() {
         push()
         translate(width/2, height/2)
 
@@ -43,8 +43,6 @@ class Player extends Entity {
                 angle += 360;
             }
             this.directionAngle = (round((angle+45) / 45) % 8);
-
-            console.log(this.directionAngle);
         } else {
             this.animationFrameCount = 12;
             this.sprite = this.idleSprite;
