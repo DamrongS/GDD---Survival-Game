@@ -16,7 +16,7 @@ class Player extends Entity {
         this.animationSpeed = 0.1;
 
         this.directionAngle = 3;
-        this.speed = 4;
+        this.speed = 2;
     }
 
     render() {
@@ -27,6 +27,15 @@ class Player extends Entity {
         let frameIndex = floor(this.frame);
         image(this.sprite, 0, 0, this.frameWidth, this.frameHeight, frameIndex * 64, row * 64, 64, 64);
         
+        pop()
+    }
+
+    renderUI(position) {
+        push()
+        translate(position.x, position.y)
+        let row = floor(this.directionAngle);
+        let frameIndex = floor(this.frame);
+        image(this.sprite, 0, 0, this.frameWidth, this.frameHeight, frameIndex * 64, row * 64, 64, 64);
         pop()
     }
 
