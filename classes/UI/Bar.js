@@ -12,6 +12,10 @@ class Bar {
         this.healthPercentage = 0.1;
     }
 
+    reposition(newPosition) {
+        this.position = newPosition;
+    }
+
     render() {
         push();
         translate(this.position.x, this.position.y);

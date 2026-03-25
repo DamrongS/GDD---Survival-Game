@@ -27,12 +27,12 @@ class Player extends Entity {
         this.hunger = this.playerConfigs.playerHunger;
         this.maxHunger = this.playerConfigs.playerHunger;
 
-        this.healthBar = new Bar(healthBarSprites, this, createVector(width/2, height/2 - 50));
+        this.healthBar = new Bar(healthBarSprites, this, createVector(width/2 + this.position.x, height/2 + this.position.y - 50));
     }
 
     render() {
         push()
-        translate(width/2, height/2)
+        translate(width/2 + this.position.x, height/2 + this.position.y)
 
         let row = floor(this.directionAngle);
         let frameIndex = floor(this.frame);
@@ -56,6 +56,7 @@ class Player extends Entity {
     // health bar, hunger bar, inventory, etc.
     renderUI() {
         // Health bar
+        this.healthBar.reposition(createVector(width/2 + this.position.x, height/2 + this.position.y - 50));
         this.healthBar.render();
 
         // Hunger bar

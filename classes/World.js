@@ -5,13 +5,37 @@ class World {
         this.camera = new Camera2D(this.player);
 
         this.entityManager.addEntity(this.player);
+
+        this.renderables = [];
+        for (let entity of this.entityManager.entities) {
+            if (entity.render) {
+                this.renderables.push(entity);
+            }
+        }
+    }
+
+    sortByYCoordinate() {
+        this.renderables.sort(
+            (a, b) =>
+                (a.position.y + a.height) -
+                (b.position.y + b.height)
+        );
+    }
+
+    collectRenderables() {
+        this.renderables = this.entityManager.entities.filter(
+            entity => entity.render
+        );
     }
 
     render() {
-        this.entityManager.render();
-
         this.camera.anchor(this.player);
-        text("center", width/2, height/2);
+
+        this.renderables.forEach(entity => {
+            entity.render();
+        });
+
+        text("center", width / 2, height / 2);
     }
 
     physics() {
@@ -19,9 +43,12 @@ class World {
     }
 
     update() {
-        this.entityManager.update();
+    this.entityManager.update();
 
-        this.camera.update(this.player);
-    }
+    this.collectRenderables();
+    this.sortByYCoordinate();
+
+    this.camera.update(this.player);
+}
 
 }
