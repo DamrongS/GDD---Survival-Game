@@ -1,8 +1,8 @@
 {
     "controls": {
-        "moveUp": "UP_ARROW",
-        "moveDown": "DOWN_ARROW",
-        "moveLeft": "LEFT_ARROW",
-        "moveRight": "RIGHT_ARROW"
+        "moveUp": 38,
+        "moveDown": 40,
+        "moveLeft": 37,
+        "moveRight": 39
     }
 }

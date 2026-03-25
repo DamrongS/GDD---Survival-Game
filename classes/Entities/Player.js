@@ -2,6 +2,9 @@ class Player extends Entity {
     constructor(x, y, sprites) {
         super(x, y);
 
+        this.playerConfigs = jsons[0];
+        this.playerPrefs = jsons[1];
+
         this.idleSprite = sprites[0];
         this.walkSprite = sprites[1];
 
@@ -16,7 +19,15 @@ class Player extends Entity {
         this.animationSpeed = 0.1;
 
         this.directionAngle = 3;
-        this.speed = 2;
+        this.speed = this.playerConfigs.playerSpeed;
+
+        this.health = this.playerConfigs.playerHealth;
+        this.maxHealth = this.playerConfigs.playerHealth;
+
+        this.hunger = this.playerConfigs.playerHunger;
+        this.maxHunger = this.playerConfigs.playerHunger;
+
+        this.healthBar = new Bar(healthBarSprites, this, createVector(width/2, height/2 - 50));
     }
 
     render() {
@@ -28,9 +39,12 @@ class Player extends Entity {
         image(this.sprite, 0, 0, this.frameWidth, this.frameHeight, frameIndex * 64, row * 64, 64, 64);
         
         pop()
+
+        this.renderUI();
     }
 
-    renderUI(position) {
+    // For rendering the player in the world (e.g., in the minimap or inventory)
+    renderSpriteUI(position) {
         push()
         translate(position.x, position.y)
         let row = floor(this.directionAngle);
@@ -39,9 +53,20 @@ class Player extends Entity {
         pop()
     }
 
+    // health bar, hunger bar, inventory, etc.
+    renderUI() {
+        // Health bar
+        this.healthBar.render();
+
+        // Hunger bar
+        push();
+
+        pop();
+    }
+
     update() {
-        let x = (keyIsDown(RIGHT_ARROW) || 0) - (keyIsDown(LEFT_ARROW) || 0);
-        let y = (keyIsDown(DOWN_ARROW) || 0) - (keyIsDown(UP_ARROW) || 0);
+        let x = (keyIsDown(this.playerPrefs.controls.moveRight) || 0) - (keyIsDown(this.playerPrefs.controls.moveLeft) || 0);
+        let y = (keyIsDown(this.playerPrefs.controls.moveDown) || 0) - (keyIsDown(this.playerPrefs.controls.moveUp) || 0);
         this.moveDirection = createVector(x, y);
 
         if(this.moveDirection.mag() > 0) {
@@ -63,5 +88,8 @@ class Player extends Entity {
         }
 
         this.frame = (this.frame + this.animationSpeed) % this.animationFrameCount;
+
+        //UI
+        this.healthBar.update();
     }
 }

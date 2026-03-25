@@ -1,11 +1,19 @@
 let myWorld;
 
-let idleSprite;
-let walkSprite;
+let playerSprites = [];
+let healthBarSprites = [];
+
+let jsons = [];
 
 function preload() {
-    idleSprite = loadImage("sprites/Top-Down Asset Pack (Oct 2025)/idle/Sprite Sheet/idle full sprite sheet (transparent BG).png");
-    walkSprite = loadImage("sprites/Top-Down Asset Pack (Oct 2025)/walk/Sprite Sheet/walk complete sprite sheet (transparent BG).png");
+  playerSprites.push(loadImage("sprites/Top-Down Asset Pack (Oct 2025)/idle/Sprite Sheet/idle full sprite sheet (transparent BG).png"));
+  playerSprites.push(loadImage("sprites/Top-Down Asset Pack (Oct 2025)/walk/Sprite Sheet/walk complete sprite sheet (transparent BG).png"));
+
+  healthBarSprites.push(loadImage("sprites/Health Bar Asset Pack 2 by Adwit Rahman/redblue2.png"));
+  healthBarSprites.push(loadImage("sprites/Health Bar Asset Pack 2 by Adwit Rahman/redblue.png"));
+
+  jsons.push(loadJSON("Data/playerConfigs.json"));
+  jsons.push(loadJSON("Data/playerPrefs.json"));
 }
 
 function setup() {

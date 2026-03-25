@@ -1,7 +1,7 @@
 class World {
     constructor() {
         this.entityManager = new EntityManager();
-        this.player = new Player(0, 0, [idleSprite, walkSprite]);
+        this.player = new Player(0, 0, playerSprites);
         this.camera = new Camera2D(this.player);
 
         this.entityManager.addEntity(this.player);
