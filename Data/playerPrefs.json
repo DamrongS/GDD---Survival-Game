@@ -3,6 +3,8 @@
         "moveUp": 38,
         "moveDown": 40,
         "moveLeft": 37,
-        "moveRight": 39
+        "moveRight": 39,
+        "interact": 69,
+        "inventory": 73
     }
 }

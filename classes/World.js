@@ -3,6 +3,7 @@ class World {
         this.entityManager = new EntityManager();
         this.player = new Player(0, 0, playerSprites);
         this.camera = new Camera2D(this.player);
+        this.mouse = new Mouse(this.camera, mouseSpriteSheet);
 
         this.entityManager.addEntity(this.player);
 
@@ -36,13 +37,18 @@ class World {
         });
 
         text("center", width / 2, height / 2);
+
+        this.mouse.render();
     }
 
     physics() {
-        
+        if(dist(width/2 + this.player.position.x, height/2 + this.player.position.y, this.camera.position.x + mouseX, this.camera.position.y + mouseY) < 16) {
+            this.mouse.setState("draggable");
+        }
     }
 
     update() {
+    this.mouse.update();
     this.entityManager.update();
 
     this.collectRenderables();

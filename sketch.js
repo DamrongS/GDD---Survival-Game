@@ -2,6 +2,7 @@ let myWorld;
 
 let playerSprites = [];
 let healthBarSprites = [];
+let mouseSpriteSheet;
 
 let jsons = [];
 
@@ -11,6 +12,8 @@ function preload() {
 
   healthBarSprites.push(loadImage("sprites/Health Bar Asset Pack 2 by Adwit Rahman/redblue2.png"));
   healthBarSprites.push(loadImage("sprites/Health Bar Asset Pack 2 by Adwit Rahman/redblue.png"));
+
+  mouseSpriteSheet = loadImage("sprites/Micro Icon Pack/Sprite Sheet (10x10).png");
 
   jsons.push(loadJSON("Data/playerConfigs.json"));
   jsons.push(loadJSON("Data/playerPrefs.json"));

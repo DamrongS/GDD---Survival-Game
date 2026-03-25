@@ -27,7 +27,13 @@ class Player extends Entity {
         this.hunger = this.playerConfigs.playerHunger;
         this.maxHunger = this.playerConfigs.playerHunger;
 
+        this.interacting = false;
+
+        this.openInventory = false;
+        this.inventoryOpen = false;
+
         this.healthBar = new Bar(healthBarSprites, this, createVector(width/2 + this.position.x, height/2 + this.position.y - 50));
+        this.inventory = new Inventory(this);
     }
 
     render() {
@@ -59,15 +65,25 @@ class Player extends Entity {
         this.healthBar.reposition(createVector(width/2 + this.position.x, height/2 + this.position.y - 50));
         this.healthBar.render();
 
-        // Hunger bar
-        push();
-
-        pop();
+        // Inventory
+        this.inventory.render();
     }
 
     update() {
+        // Input handling
+        // movement input
         let x = (keyIsDown(this.playerPrefs.controls.moveRight) || 0) - (keyIsDown(this.playerPrefs.controls.moveLeft) || 0);
         let y = (keyIsDown(this.playerPrefs.controls.moveDown) || 0) - (keyIsDown(this.playerPrefs.controls.moveUp) || 0);
+        
+        //interaction input
+        this.interacting = keyIsDown(this.playerPrefs.controls.interact);
+        console.log("Interacting: " + this.interacting);
+
+        //inventory input
+        if(keyIsDown(this.playerPrefs.controls.inventory)) {
+            this.inventory.toggle();
+        }
+
         this.moveDirection = createVector(x, y);
 
         if(this.moveDirection.mag() > 0) {
@@ -92,5 +108,6 @@ class Player extends Entity {
 
         //UI
         this.healthBar.update();
+        this.inventory.update();
     }
 }
