@@ -3,6 +3,8 @@ let myWorld;
 let playerSprites = [];
 let healthBarSprites = [];
 let mouseSpriteSheet;
+let inventorySprite;
+let hotbarSprite;
 
 let jsons = [];
 
@@ -14,9 +16,12 @@ function preload() {
   healthBarSprites.push(loadImage("sprites/Health Bar Asset Pack 2 by Adwit Rahman/redblue.png"));
 
   mouseSpriteSheet = loadImage("sprites/Micro Icon Pack/Sprite Sheet (10x10).png");
+  inventorySprite = loadImage("sprites/GUI/Inventory.png");
+  hotbarSprite = loadImage("sprites/GUI/Hotbar.png");
 
   jsons.push(loadJSON("Data/playerConfigs.json"));
   jsons.push(loadJSON("Data/playerPrefs.json"));
+  jsons.push(loadJSON("Data/playerInventory.json"));
 }
 
 function setup() {

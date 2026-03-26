@@ -4,6 +4,7 @@ class World {
         this.player = new Player(0, 0, playerSprites);
         this.camera = new Camera2D(this.player);
         this.mouse = new Mouse(this.camera, mouseSpriteSheet);
+        this.player.camera = this.camera;
 
         this.entityManager.addEntity(this.player);
 
@@ -36,7 +37,12 @@ class World {
             entity.render();
         });
 
-        text("center", width / 2, height / 2);
+        push()
+        noStroke();
+        fill(0);
+        circle(width/2, height/2, 4);
+        text("center", width / 2, height / 2 - 16);
+        pop()
 
         this.mouse.render();
     }

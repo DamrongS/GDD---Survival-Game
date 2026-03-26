@@ -33,7 +33,9 @@ class Player extends Entity {
         this.inventoryOpen = false;
 
         this.healthBar = new Bar(healthBarSprites, this, createVector(width/2 + this.position.x, height/2 + this.position.y - 50));
+
         this.inventory = new Inventory(this);
+        this.hotbar = new Hotbar(this, this.inventory);
     }
 
     render() {
@@ -50,12 +52,12 @@ class Player extends Entity {
     }
 
     // For rendering the player in the world (e.g., in the minimap or inventory)
-    renderSpriteUI(position) {
+    renderSpriteUI(position, scale=1) {
         push()
         translate(position.x, position.y)
         let row = floor(this.directionAngle);
         let frameIndex = floor(this.frame);
-        image(this.sprite, 0, 0, this.frameWidth, this.frameHeight, frameIndex * 64, row * 64, 64, 64);
+        image(this.sprite, 0, 0, this.frameWidth * scale, this.frameHeight * scale, frameIndex * 64, row * 64, 64, 64);
         pop()
     }
 
@@ -67,6 +69,7 @@ class Player extends Entity {
 
         // Inventory
         this.inventory.render();
+        this.hotbar.render();
     }
 
     update() {
@@ -108,6 +111,7 @@ class Player extends Entity {
 
         //UI
         this.healthBar.update();
-        this.inventory.update();
+        this.inventory.update(this.camera);
+        this.hotbar.update(this.camera);
     }
 }

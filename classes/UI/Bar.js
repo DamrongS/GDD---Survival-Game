@@ -15,7 +15,7 @@ class Bar {
     reposition(newPosition) {
         this.position = newPosition;
     }
-
+    
     render() {
         push();
         translate(this.position.x, this.position.y);

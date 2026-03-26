@@ -8,6 +8,9 @@ class Inventory {
 
         this.toggleDebounce = false;
         this.inventoryOpen = false;
+
+        this.playerInventory = jsons[2].playerInventory;
+        console.log(this.playerInventory);
     }
 
     render() {
@@ -16,7 +19,8 @@ class Inventory {
             translate(width/2 + this.player.position.x, height/2 + this.player.position.y);
             fill(50, 150);
             rectMode(CENTER);
-            rect(0, 0, 400, 400);
+            image(inventorySprite, 0, 0);
+            this.player.renderSpriteUI(createVector(-width/11.5, -height/4.3), 4);
             pop();
         }
     }
