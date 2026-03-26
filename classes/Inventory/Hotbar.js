@@ -10,12 +10,12 @@ class Hotbar {
             height: 16*6,
         }
 
-        this.slotSize = 95;
+        this.slotSize = 96.5;
         this.cols = 9;
         this.rows = 4;
 
-        this.startX = this.player.position.x - width/3.35;
-        this.startY = this.player.position.y + height/3.7;
+        this.startX = this.player.position.x - width/3.85;
+        this.startY = this.player.position.y + height/2.9;
     }
 
     render() {
@@ -40,15 +40,24 @@ class Hotbar {
                 let y = this.startY + row * this.slotSize;
 
                 imageMode(CORNER);
-                image(sprite, x, y, 128*2, 128*2);
+                image(sprite, x, y, 128/1.2, 128/1.2);
 
                 if (quantity > 0) {
                     fill(255);
                     textSize(16);
                     textAlign(RIGHT, BOTTOM);
-                    text(quantity, x + this.slotSize + 70, y + this.slotSize + 70);
+                    text(quantity, x + this.slotSize, y + this.slotSize);
                 }
             }
+            pop();
+
+            push();
+            translate(width/2 + this.player.camera.position.x, height/2 + this.player.camera.position.y);
+            rectMode(CORNER);
+            noFill();
+            strokeWeight(10);
+            stroke(255, 255, 0);
+            rect(14+this.startX + this.player.selectedSlot * this.slotSize, 13+this.startY, this.slotSize-6, this.slotSize-6);
             pop();
     }
 

@@ -5,6 +5,15 @@
         "moveLeft": 37,
         "moveRight": 39,
         "interact": 69,
-        "inventory": 73
+        "inventory": 73,
+        "slot1": 49,
+        "slot2": 50,
+        "slot3": 51,
+        "slot4": 52,
+        "slot5": 53,
+        "slot6": 54,
+        "slot7": 55,
+        "slot8": 56,
+        "slot9": 57
     }
 }

@@ -3,21 +3,29 @@ class Inventory {
         this.player = player;
         this.playerInventory = jsons[2].playerInventory;
 
+        this.selectedSlot = player.selectedSlot;
+
         this.toggleTimer = 0;
         this.toggleDelay = 200; // milliseconds
 
         this.toggleDebounce = false;
         this.inventoryOpen = false;
 
-        this.slotSize = 71;
+        this.slotSize = 71.5;
         this.cols = 9;
         this.rows = 4;
 
-        this.startX = this.player.position.x - width/4.9;
-        this.startY = this.player.position.y + height/7.3;
+        this.startX = this.player.position.x - width/5.3;
+        this.startY = this.player.position.y + height/6;
 
         console.log(this.playerInventory);
     }
+
+    getItemFromHotbar(slot) {
+        if (slot < 0 || slot >= 9) return null;
+        return this.playerInventory[slot];
+    }
+
 
     render() {
         if (this.inventoryOpen) {
@@ -47,13 +55,13 @@ class Inventory {
                 let y = this.startY + row * this.slotSize;
 
                 imageMode(CORNER);
-                image(sprite, x, y, 128, 128);
+                image(sprite, x, y, 64, 64);
 
                 if (quantity > 0) {
                     fill(255);
                     textSize(16);
                     textAlign(RIGHT, BOTTOM);
-                    text(quantity, x + this.slotSize + 20, y + this.slotSize + 22);
+                    text(quantity, x + this.slotSize - 10, y + this.slotSize-10);
                 }
 
             }
@@ -76,13 +84,13 @@ class Inventory {
                 let y = (this.startY + row * this.slotSize) - height/3.1;
 
                 imageMode(CORNER);
-                image(sprite, x, y, 128, 128);
+                image(sprite, x, y, 64, 64);
 
                 if (quantity > 0) {
                     fill(255);
                     textSize(16);
                     textAlign(RIGHT, BOTTOM);
-                    text(quantity, x + this.slotSize + 20, y + this.slotSize + 22);
+                    text(quantity, x + this.slotSize - 10, y + this.slotSize-10);
                 }
 
             }

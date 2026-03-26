@@ -55,12 +55,12 @@ function loadAllItems() {
 }
 
 function setup() {
+  loadAllItems();
+  
   createCanvas(windowWidth, windowHeight);
   noSmooth();
   imageMode(CENTER);
   textAlign(CENTER, CENTER);
-
-  loadAllItems();
 
   myWorld = new World();
 }
