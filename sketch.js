@@ -7,6 +7,7 @@ let inventorySprite;
 let hotbarSprite;
 
 let jsons = [];
+let itemJsons;
 
 function preload() {
   playerSprites.push(loadImage("sprites/Top-Down Asset Pack (Oct 2025)/idle/Sprite Sheet/idle full sprite sheet (transparent BG).png"));
@@ -22,6 +23,8 @@ function preload() {
   jsons.push(loadJSON("Saves/playerConfigs.json"));
   jsons.push(loadJSON("Saves/playerPrefs.json"));
   jsons.push(loadJSON("Saves/playerInventory.json"));
+
+  itemJsons = loadJSON("Data/Definitions/Items/Items.json");
 }
 
 function setup() {
@@ -31,7 +34,6 @@ function setup() {
   textAlign(CENTER, CENTER);
 
   myWorld = new World();
-
 }
 
 function draw() {

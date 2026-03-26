@@ -1,6 +1,6 @@
 {
     "name": "Template",
-    "id": 0,
+    "id": "template",
     "description": "a template, that defines the structure of item from this world.",
     "stackable": true,
     "maxStack": "inf",

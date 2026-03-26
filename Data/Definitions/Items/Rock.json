@@ -1,6 +1,6 @@
 {
     "name": "Rock",
-    "id": 1,
+    "id": "rock",
     "description": "A small rock. Can be used for crafting.",
     "stackable": true,
     "maxStack": 128,

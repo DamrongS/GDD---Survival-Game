@@ -1,7 +1,7 @@
 class Inventory {
     constructor(player) {
         this.player = player;
-        this.slots = new Array(20).fill(null);
+        this.slots = new Array(36).fill(null);
 
         this.toggleTimer = 0;
         this.toggleDelay = 200; // milliseconds
@@ -11,6 +11,10 @@ class Inventory {
 
         this.playerInventory = jsons[2].playerInventory;
         console.log(this.playerInventory);
+    }
+
+    updateSlots() {
+
     }
 
     render() {
@@ -33,6 +37,8 @@ class Inventory {
                 this.toggleTimer = 0;
             }
         }
+
+        this.updateSlots();
     }
 
     toggle() {
