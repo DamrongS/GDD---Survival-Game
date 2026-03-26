@@ -19,9 +19,9 @@ function preload() {
   inventorySprite = loadImage("sprites/GUI/Inventory.png");
   hotbarSprite = loadImage("sprites/GUI/Hotbar.png");
 
-  jsons.push(loadJSON("Data/playerConfigs.json"));
-  jsons.push(loadJSON("Data/playerPrefs.json"));
-  jsons.push(loadJSON("Data/playerInventory.json"));
+  jsons.push(loadJSON("Saves/playerConfigs.json"));
+  jsons.push(loadJSON("Saves/playerPrefs.json"));
+  jsons.push(loadJSON("Saves/playerInventory.json"));
 }
 
 function setup() {

@@ -1,9 +1,6 @@
 {
     "playerInventory": {
-        "1": {
-            "item": "Rock",
-            "quantity": 64
-        },
+        "1": { "id": "rock", "quantity": 3 },
         "2": {},
         "3": {},
         "4": {},
