@@ -36,6 +36,9 @@ class Player extends Entity {
         this.selectedSlot = 0;
         this.holdingItem;
 
+        this.itemX = 0;
+        this.itemY = 0;
+
         this.healthBar = new Bar(healthBarSprites, this, createVector(width/2 + this.position.x, height/2 + this.position.y - 50));
 
         this.inventory = new Inventory(this);
@@ -50,11 +53,11 @@ class Player extends Entity {
         let frameIndex = floor(this.frame);
 
         // Determine if item should be behind player
-        let renderItemBehind = this.lookDirection.y < 0;
+        let renderItemBehind = (this.itemY < 0);
 
         if(this.itemSprite && renderItemBehind) {
             // Draw item behind the player
-            image(this.itemSprite, this.lookDirection.x * 20, this.lookDirection.y * 20, 16, 16);
+            image(this.itemSprite, this.itemX, this.itemY, 16, 16);
         }
 
         // Draw player sprite
@@ -67,7 +70,7 @@ class Player extends Entity {
 
         if(this.itemSprite && !renderItemBehind) {
             // Draw item in front of the player
-            image(this.itemSprite, this.lookDirection.x * 20, this.lookDirection.y * 20, 16, 16);
+            image(this.itemSprite, this.itemX, this.itemY, 16, 16);
         }
 
         pop();
@@ -122,6 +125,9 @@ class Player extends Entity {
         this.holdingItem = this.inventory.getItemFromHotbar(this.selectedSlot);
 
         this.itemSprite = itemSprites[this.holdingItem.id];
+
+        this.itemX = lerp(this.itemX, this.lookDirection.x * 20, 0.1);
+        this.itemY = lerp(this.itemY, this.lookDirection.y * 20, 0.11);
 
         // movement input
         let x = (keyIsDown(this.playerPrefs.controls.moveRight) || 0) - (keyIsDown(this.playerPrefs.controls.moveLeft) || 0);
