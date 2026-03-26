@@ -10,6 +10,9 @@ let jsons = [];
 let itemsRegistry;
 let itemData = {};
 let itemSprites = {};
+let box = { x: 50, y: 100 };
+
+//let tweenService;
 
 function preload() {
   playerSprites.push(loadImage("sprites/Top-Down Asset Pack (Oct 2025)/idle/Sprite Sheet/idle full sprite sheet (transparent BG).png"));
@@ -63,6 +66,9 @@ function setup() {
   textAlign(CENTER, CENTER);
 
   myWorld = new World();
+  //tweenService = new TweenService();
+  //const info = new TweenInfo({ duration: 2000, easing: TweenInfo.easeInOutQuad, repeat: -1 }, reverse = true);
+  //tweenService.createTween(box, { x: 300 }, info);
 }
 
 function draw() {
@@ -71,4 +77,10 @@ function draw() {
   myWorld.update();
   myWorld.physics();
   myWorld.render();
+
+  tweenService.update();
+
+  // draw box
+  //rect(box.x, box.y, 50, 50);
+  //text("i am a tweening box!", box.x, box.y - 30);
 }
