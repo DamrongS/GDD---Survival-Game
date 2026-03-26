@@ -1,0 +1,8 @@
+{
+    "name": "Template",
+    "id": 0,
+    "description": "a template, that defines the structure of item from this world.",
+    "stackable": true,
+    "maxStack": "inf",
+    "texture": "missingno.png"
+}
